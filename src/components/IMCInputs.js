@@ -1,7 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity, Vibration } from 'react-native';
 import { useState } from 'react';
 import formStyles from '../../assets/styles/formStyle';
-function IMCInputs({ setIMC, setInfo }) {
+function IMCInputs({ setIMC, setInfo, setImcList }) {
     const [altura, setAltura] = useState(null);
     const [massa, setMassa] = useState(null);
     const [textButton, setTextButton] = useState('Calcular IMC');
@@ -15,23 +15,26 @@ function IMCInputs({ setIMC, setInfo }) {
             setErrorMessage(null);
             let massaFormat = massa.replace(',', '.');
             let alturaFormat = altura.replace(',', '.');
+            let info = '';
             const imc = (Math.abs(massaFormat) / Math.pow(Math.abs(alturaFormat), 2));
             if (imc < 18.5) {
-                setInfo('Magreza');
+                info = 'Magreza';
             }
             else if ((imc >= 18.5) && (imc < 25)) {
-                setInfo('Normal');
+                info = 'Normal';
             }
             else if ((imc >= 25) && (imc < 30)) {
-                setInfo('Sobrepeso');
+                info = 'Sobrepeso';
             }
             else if ((imc >= 30) && (imc < 40)) {
-                setInfo('Obesidade moderada');
+                info = 'Obesidade moderada';
             }
             else if (imc >= 40) {
-                setInfo('Obesidade grave');
+                info = 'Obesidade grave';
             }
             setIMC(imc.toFixed(2));
+            setInfo(info);
+            setImcList((arr) => [...arr, {id: new Date().getTime(), imc: imc.toFixed(2), info: info}]);
             setAltura(null);
             setMassa(null);
             setTextButton('Recalcular');

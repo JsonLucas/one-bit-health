@@ -5,7 +5,7 @@ const formStyles = StyleSheet.create({
         width: '100%',
         height: '100%',
         justifyContent: 'space-around',
-        bottom: 0,
+        bottom: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
         borderTopLeftRadius: 30,
@@ -48,8 +48,7 @@ const formStyles = StyleSheet.create({
         fontSize: 20
     }, 
     resultIMC: {
-        flex: 1,
-        marginTop: 15,
+        marginTop: 10,
         borderRadius: 50,
         alignItems: 'center',
         width: '100%'
@@ -84,6 +83,24 @@ const formStyles = StyleSheet.create({
         color: '#fff',
         fontWeight: 'bold',
         paddingHorizontal: 30
+    },
+    historyIndex:{
+        marginTop: 25,
+        alignItems: 'center'
+    },
+    textHistoryIndex: {
+        fontSize: 23,
+        fontWeight: "bold"
+    },
+    listImc: {
+        padding: 5
+    },
+    textItemList: {
+        height: 50,
+        width: '100%',
+        color: 'red',
+        fontSize: 23,
+        paddingBottom: 2.5
     }
 });
 
